@@ -1,0 +1,43 @@
+body{
+    background: cadetblue;
+}
+
+.upper-container{
+    display: flex;
+    width: 99%;
+}
+ 
+.upper-container > h1 {
+    width: 99%;
+    border: 2px solid #000;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.lower-container{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 99%;
+    height: 75%;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    align-items: center;
+    border: 2px solid #000;
+    padding: 0 5px;
+    
+}
+
+aside{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    align-items: center;
+    border: 2px solid #000;
+    padding: 0 5px;
+    
+}
