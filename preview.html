@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+<script>
+    const deleteShow = function (deleteShow){
+        console.log("show deleted!")
+    }
+    const submitShow = function (submitShow){
+        console.log("Show created!")
+    }
+</script>
 <head>
     <link rel="stylesheet" href="tv-demo.css">
 </head> 
@@ -13,9 +21,9 @@
     <aside>
         <h2>Shows</h2>
         <ul>
-            <li>Dancing with the stars<button type="button">-</button></li>
-            <li>American Ninja Warrior<button type="button">-</button></li>
-            <li>Walking Dead<button type="button">-</button></li>
+            <li>Dancing with the stars<button onclick="deleteShow()"><type="button">-</button></li>
+            <li>American Ninja Warrior<button onclick="deleteShow()"><type="button">-</button></li>
+            <li>Walking Dead<button onclick="deleteShow()"><type="button">-</button></li>
         </ul>
     </aside>
     <section>
