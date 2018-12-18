@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import TvShow from "./TvShow"
 
 export default class PreviewPage extends Component{
     render(){
@@ -7,11 +8,12 @@ export default class PreviewPage extends Component{
                 <div className = "lower-container">
                     <aside>
                          <h2>Shows</h2>
-                         <ul>
+                         <TvShow/>
+                         {/* <ul>
                             <li>Dancing with the stars<button >-</button></li>
                             <li>American Ninja Warrior<button >-</button></li>
                             <li>Walking Dead<button >-</button></li>
-                        </ul>
+                        </ul> */}
                     </aside>
                     <section>
                         <h2>Dancing with the stars</h2>

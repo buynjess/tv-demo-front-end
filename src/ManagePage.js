@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import TvShow from "./TvShow"
 // import SiteNav from "./siteNav"
 
 export default class ManagePage extends Component{
@@ -9,11 +10,12 @@ export default class ManagePage extends Component{
                 <div className="lower-container">
                 <aside>
                     <h2>Shows</h2>
-                    <ul>
+                    <TvShow allowDelete={true}/>
+                    {/* <ul>
                         <li>Dancing with the stars<button >-</button></li>
                         <li>American Ninja Warrior<button >-</button></li>
                         <li>Walking Dead<button >-</button></li>
-                    </ul>
+                    </ul> */}
                 </aside>
                 <section>
                     <h2>New/Edit Show</h2>
