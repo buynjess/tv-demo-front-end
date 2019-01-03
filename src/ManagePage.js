@@ -9,6 +9,9 @@ export default class ManagePage extends Component{
     tvShowDeleted = (tvShowDeleted) => {
         console.log(tvShowDeleted)
     }
+    saveTvShow = (saveTvShow) => {
+        console.log(saveTvShow)
+    }
     
     render(){
         return(
@@ -18,7 +21,7 @@ export default class ManagePage extends Component{
                 <aside>
                     <h2>Shows</h2>
                     <TvShow allowDelete={true}/>
-                    <TvShow selectHandler={this.tvShowSelected}deleteHandeler={this.tvShowDeleted}/>
+                    <TvShow selectHandler={this.tvShowSelected}deleteHandeler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>
                 </aside>
                 <section>
                     <h2>New/Edit Show</h2>
