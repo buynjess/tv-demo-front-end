@@ -9,11 +9,6 @@ export default class PreviewPage extends Component{
                     <aside>
                          <h2>Shows</h2>
                          <TvShow/>
-                         {/* <ul>
-                            <li>Dancing with the stars<button >-</button></li>
-                            <li>American Ninja Warrior<button >-</button></li>
-                            <li>Walking Dead<button >-</button></li>
-                        </ul> */}
                     </aside>
                     <section>
                         <h2>Dancing with the stars</h2>

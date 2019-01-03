@@ -4,14 +4,14 @@ export default class extends Component {
 
  renderDelete () {
      if(this.props.allowDelete){
-         return(<button>{this.props.allowDelete}</button>)
+         return(<button onClick= {this.props.selectHandeler}>{this.props.allowDelete}</button>)
      }
 }
 
     render(){
         return(
             <div>
-                <button>{this.props.name}</button>
+                <button onClick={this.props.deleteHandeler}>{this.props.name}</button>
                 {this.renderDelete()}
 
             </div>

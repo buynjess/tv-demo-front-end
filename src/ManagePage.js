@@ -3,6 +3,13 @@ import TvShow from "./TvShow"
 // import SiteNav from "./siteNav"
 
 export default class ManagePage extends Component{
+    tvShowSelected = (tvShowSelected) => {
+        console.log(tvShowSelected)
+    }
+    tvShowDeleted = (tvShowDeleted) => {
+        console.log(tvShowDeleted)
+    }
+    
     render(){
         return(
             <div>
@@ -11,11 +18,7 @@ export default class ManagePage extends Component{
                 <aside>
                     <h2>Shows</h2>
                     <TvShow allowDelete={true}/>
-                    {/* <ul>
-                        <li>Dancing with the stars<button >-</button></li>
-                        <li>American Ninja Warrior<button >-</button></li>
-                        <li>Walking Dead<button >-</button></li>
-                    </ul> */}
+                    <TvShow selectHandler={this.tvShowSelected}deleteHandeler={this.tvShowDeleted}/>
                 </aside>
                 <section>
                     <h2>New/Edit Show</h2>

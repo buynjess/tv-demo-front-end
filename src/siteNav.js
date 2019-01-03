@@ -13,7 +13,7 @@ class SiteNav extends Component{
                     <nav>
                      <ul className="upper-container">
                         <li className="upper-container>li"><Link to="/"><h1>ManagePage</h1></Link></li>
-                        <li className="upper-container>li"><Link to="/PreviewPage"><h1>PreviewPage</h1></Link></li>
+                        <li className="upper-container>liS"><Link to="/PreviewPage"><h1>PreviewPage</h1></Link></li>
                      </ul>
                     </nav>
                 <Route exact path="/" component={ManagePage} />
