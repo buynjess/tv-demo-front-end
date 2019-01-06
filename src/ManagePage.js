@@ -1,16 +1,16 @@
 import React, { Component } from "react"
 import TvShow from "./TvShow"
-// import SiteNav from "./siteNav"
+
 
 export default class ManagePage extends Component{
-    tvShowSelected = (tvShowSelected) => {
-        console.log(tvShowSelected)
+    tvShowSelected = () => {
+        console.log("tvShowSelected")
     }
-    tvShowDeleted = (tvShowDeleted) => {
-        console.log(tvShowDeleted)
+    tvShowDeleted = () => {
+        console.log("tvShowDeleted")
     }
-    saveTvShow = (saveTvShow) => {
-        console.log(saveTvShow)
+    saveTvShow = () => {
+        console.log("saveTvShow")
     }
     
     render(){
@@ -20,8 +20,7 @@ export default class ManagePage extends Component{
                 <div className="lower-container">
                 <aside>
                     <h2>Shows</h2>
-                    <TvShow allowDelete={true}/>
-                    <TvShow selectHandler={this.tvShowSelected}deleteHandeler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>
+                    <TvShow name="Dancing With The Stars" allowDelete={true} selectHandler={this.tvShowSelected}deleteHandler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>
                 </aside>
                 <section>
                     <h2>New/Edit Show</h2>
