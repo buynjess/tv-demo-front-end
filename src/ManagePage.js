@@ -12,7 +12,7 @@ export default class ManagePage extends Component{
     saveTvShow = () => {
         console.log("saveTvShow")
     }
-    
+
     render(){
         return(
             <div>
@@ -25,19 +25,12 @@ export default class ManagePage extends Component{
                 <section>
                     <h2>New/Edit Show</h2>
                     <form>
-                        Name: <input type="text"/>
+                        Name: <input onChange={this.setState({ nameInProgress: event.target.name })} type="text" value="Name"/>
                         <br/>
-                        Rating: 
-                        <select>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
+                        Rating:<input onChange={this.setState({ ratingInProgress: event.target.name })} type="text" value="Rating"/>
                         <br/>      
-                        Img URL:<input type="link"/>
-                         <br/>
+                        Img URL:<input onChange={this.setState({ imgInProgress: event.target.name })} type="link" value="Img"/>
+                         {/* <br/> */}
                          <button>Create/Upadate</button>
                         </form>
                     </section>
