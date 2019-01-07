@@ -5,9 +5,9 @@ import TvShow from "./TvShow"
 export default class ManagePage extends Component{
     constructor(props) {
         super(props);
-        this.state = { nameInProgress="",
-                       ratingInProgress="",
-                       imgInProgress=""  }
+        this.state = { nameInProgress:"",
+                       ratingInProgress:"",
+                       imgInProgress:""  }
     }
     tvShowSelected = () => {
         console.log("tvShowSelected")
