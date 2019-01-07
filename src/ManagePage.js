@@ -14,6 +14,11 @@ export default class ManagePage extends Component{
     }
 
     render(){
+        state = {
+            nameInProgress ="Name of show",
+            ratingInProgress ="Rating of show",
+            imgInProgress ="Pic of show"
+        }
         return(
             <div>
             
