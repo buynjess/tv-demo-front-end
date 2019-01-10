@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class extends Component {
+export default class TvShow extends Component {
 
  renderDelete () {
      if(this.props.allowDelete){

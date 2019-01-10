@@ -10,12 +10,23 @@ export default class ManagePage extends Component{
         console.log("tvShowDeleted")
     }
     saveTvShow = () => {
+        this.setState({
+            tvShow:{
+                name:this.state.nameInProgress,
+                rating:this.state.ratingInProgress,
+                img:this.state.imgInProgress
+            },
+            nameInProgress:"",
+            ratingInProgress:"",
+            imgInProgress:""
+        })
         console.log("saveTvShow")
+
     }
     renderTvShow = () => {
-        return(<TvShow allowDelete={true} selectHandler={this.tvShowSelected}deleteHandler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>)
+        return(<TvShow name={this.state.tvShow.nameInProgress} allowDelete={true} selectHandler={this.tvShowSelected}deleteHandler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>)
     }
-    state = {nameInProgress:"", ratingInProgress:"", imgInProgress:""}
+    state = {nameInProgress:"", ratingInProgress:"", imgInProgress:"", tvShow:{name:"", rating:"", img:""}}
 
     render = () => {
         return(
@@ -29,13 +40,19 @@ export default class ManagePage extends Component{
                 <section>
                     <h2>New/Edit Show</h2>
                     <form>
-                        Name: <input onChange={(event) =>{this.setState({ nameInProgress: event.target.value })}}type="text" value="nameInProgress"/>
+                        Name: <input onChange={(e) => {
+                            this.setState({ nameInProgress: e.target.value })
+                            }}type="text" value={this.state.nameInProgress}/>
                         <br/> 
-                        Rating:<input onChange={(event) =>{this.setState({ ratingInProgress: event.target.value })}} type="text" value="ratingInProgress"/>
+                        Rating:<input onChange={(e) => {
+                            this.setState({ ratingInProgress: e.target.value })
+                            }} type="text" value={this.state.ratingInProgress}/>
                         <br/>      
-                        Img URL:<input onChange={(event) =>{this.setState({ imgInProgress: event.target.value })}} type="link" value="imgInprogress"/> 
+                        Img URL:<input onChange={(e) => {
+                            this.setState({ imgInProgress: e.target.value })
+                            }} type="link" value={this.state.imgInProgress}/> 
                         <br/>
-                        <button>Create/Upadate</button>
+                        <button onClick={this.saveTvShow}>Create/Update/Save</button>
                         </form>
                     </section>
                     </div>
