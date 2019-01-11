@@ -13,7 +13,7 @@ export default class TvShow extends Component {
             <div>
                 <button onClick={this.props.selectHandler}>{this.props.name}</button>
                 {this.renderDelete()}
-                <button onClick={this.props.saveHandler}>Save</button>
+                {/* <button onClick={this.props.saveHandler}>Save</button> */}
             </div>
         )
     }

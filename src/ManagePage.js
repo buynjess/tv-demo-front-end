@@ -4,12 +4,26 @@ import TvShow from "./TvShow"
 
 export default class ManagePage extends Component{
     tvShowSelected = () => {
+        this.setState({
+            nameInProgress:this.state.tvShow.name,
+            ratingInProgress:this.state.tvShow.rating,
+            imgInProgress:this.state.tvShow.img
+        })
         console.log("tvShowSelected")
+    
     }
     tvShowDeleted = () => {
+        this.setState({
+            tvShow:{
+                name:"",
+                rating:"",
+                img:""
+            }
+        })
         console.log("tvShowDeleted")
     }
-    saveTvShow = () => {
+    saveTvShow = (event) => {
+        event.preventDefault()
         this.setState({
             tvShow:{
                 name:this.state.nameInProgress,
@@ -24,7 +38,7 @@ export default class ManagePage extends Component{
 
     }
     renderTvShow = () => {
-        return(<TvShow name={this.state.tvShow.nameInProgress} allowDelete={true} selectHandler={this.tvShowSelected}deleteHandler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>)
+        return(<TvShow name={this.state.tvShow.name} allowDelete={true} selectHandler={this.tvShowSelected}deleteHandler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>)
     }
     state = {nameInProgress:"", ratingInProgress:"", imgInProgress:"", tvShow:{name:"", rating:"", img:""}}
 
