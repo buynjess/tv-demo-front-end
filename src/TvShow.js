@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
+import propTypes from 'prop-types'
 
 export default class TvShow extends Component {
+    static propTypes = {
+        name: propTypes.string,
+        optionalBool: propTypes.bool,
+        selectHandler: propTypes.func.isRequired,
+        deleteHandler: propTypes.func
+    }
 
  renderDelete () {
      if(this.props.allowDelete){
