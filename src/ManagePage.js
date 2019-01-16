@@ -1,35 +1,30 @@
 import React, { Component } from "react"
 import TvShow from "./TvShow"
+import propTypes from 'prop-types'
 
 
 export default class ManagePage extends Component{
     tvShowSelected = () => {
         this.setState({
-            nameInProgress:this.state.tvShow.name,
-            ratingInProgress:this.state.tvShow.rating,
-            imgInProgress:this.state.tvShow.img
+            nameInProgress:this.props.tvShow.name,
+            ratingInProgress:this.props.tvShow.rating,
+            imgInProgress:this.props.tvShow.img
         })
         console.log("tvShowSelected")
     
     }
     tvShowDeleted = () => {
-        this.setState({
-            tvShow:{
-                name:"",
-                rating:"",
-                img:""
-            }
-        })
+        this.props.tvShowDeleted()    
         console.log("tvShowDeleted")
     }
-    saveTvShow = (event) => {
+    passTvShowUp = (event) => {
         event.preventDefault()
+        this.props.saveTvShow({
+            name: this.state.nameInProgress,
+            rating:this.state.ratingInProgress,
+            img:this.state.imgInProgress
+        })
         this.setState({
-            tvShow:{
-                name:this.state.nameInProgress,
-                rating:this.state.ratingInProgress,
-                img:this.state.imgInProgress
-            },
             nameInProgress:"",
             ratingInProgress:"",
             imgInProgress:""
@@ -38,9 +33,16 @@ export default class ManagePage extends Component{
 
     }
     renderTvShow = () => {
-        return(<TvShow name={this.state.tvShow.name} allowDelete={true} selectHandler={this.tvShowSelected}deleteHandler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>)
+        console.log('from renderTvShowOnManagePage', this.props.tvShow)
+        return(<TvShow name={this.props.tvShow.name} allowDelete={true} selectHandler={this.tvShowSelected}deleteHandler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>)
     }
-    state = {nameInProgress:"", ratingInProgress:"", imgInProgress:"", tvShow:{name:"", rating:"", img:""}}
+    static propTypes = {
+        tvShow: propTypes.object.isRequired,
+        tvShowDeleted: propTypes.func.isRequired,
+        saveTvShow: propTypes.func.isRequired
+
+    }
+    state = {nameInProgress:"", ratingInProgress:"", imgInProgress:""}
 
     render = () => {
         return(
@@ -66,7 +68,7 @@ export default class ManagePage extends Component{
                             this.setState({ imgInProgress: e.target.value })
                             }} type="link" value={this.state.imgInProgress}/> 
                         <br/>
-                        <button onClick={this.saveTvShow}>Create/Update/Save</button>
+                        <button onClick={this.passTvShowUp}>Create/Update/Save</button>
                         </form>
                     </section>
                     </div>

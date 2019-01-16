@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-import { Route, Link } from 'react-router-dom'
-import ManagePage from "./ManagePage"
-import PreviewPage from "./PreviewPage"
+import { Link } from 'react-router-dom'
+
 
 
 
@@ -16,8 +15,6 @@ class SiteNav extends Component{
                         <li className="upper-container>liS"><Link to="/PreviewPage"><h1>PreviewPage</h1></Link></li>
                      </ul>
                     </nav>
-                <Route exact path="/" component={ManagePage} />
-                <Route path="/PreviewPage" component={PreviewPage} />
                 </div>
     
         )
