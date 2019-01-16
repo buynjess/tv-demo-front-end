@@ -1,19 +1,42 @@
 import React, { Component } from "react"
 import TvShow from "./TvShow"
+import propTypes from 'prop-types'
 
 export default class PreviewPage extends Component{
+    
+    tvShowSelected = () => {
+        this.setState({
+            selectedShow:{
+                name:this.props.tvShow.name, 
+                rating:this.props.tvShow.rating, 
+                img:this.props.tvShow.img}
+        })
+    }    
+    static propTypes = {
+        tvShow: propTypes.object.isRequired
+    }
+
+    state = {
+        selectedShow: {name:"", rating:"", img:""}
+    }
+
+
+
+    renderTvShow = () => {
+        return(
+            <TvShow name={this.props.tvShow.name} selectHandler={this.props.tvShowSelected}/>
+        )
+    }
     render(){
         return(
             <div>
                 <div className = "lower-container">
                     <aside>
                          <h2>Shows</h2>
-                         <TvShow/>
+                         {this.renderTvShow()}
                     </aside>
                     <section>
-                        <h2>Dancing with the stars</h2>
-                        <h3>Rating: 1</h3>
-                        <img src="https://cdn1.thr.com/sites/default/files/imagecache/scale_crop_768_433/2013/07/tango.jpg" alt="Dancing With the Stars"/>
+                    <TvShow name={this.state.selectedShow.name}selectHandler={this.props.tvShowSelected}/>  
                     </section>
                 </div>
             </div>

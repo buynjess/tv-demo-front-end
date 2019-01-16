@@ -34,7 +34,7 @@ export default class ManagePage extends Component{
     }
     renderTvShow = () => {
         console.log('from renderTvShowOnManagePage', this.props.tvShow)
-        return(<TvShow name={this.props.tvShow.name} allowDelete={true} selectHandler={this.tvShowSelected}deleteHandler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>)
+        return(<TvShow name={this.props.tvShow.name}allowDelete={true}selectHandler={this.tvShowSelected}deleteHandler={this.tvShowDeleted}saveHandler={this.saveTvShow}/>)
     }
     static propTypes = {
         tvShow: propTypes.object.isRequired,

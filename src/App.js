@@ -27,6 +27,14 @@ saveTvShow = (ObjshowToSave) => {
 
 }
 
+renderPreviewPage = () => {
+  return(
+    <div>
+      <PreviewPage tvShow={this.state.tvShow}/>
+    </div>
+  )
+}
+
 renderManagePage = () => {
   return(
     <div>
@@ -41,9 +49,9 @@ renderManagePage = () => {
             <SiteNav/> 
             <Switch>
             <Route exact path="/" component={this.renderManagePage} />
-            <Route path="/PreviewPage" component={PreviewPage} />
+            <Route path="/PreviewPage" component={this.renderPreviewPage} />
             </Switch> 
-            
+
       </div>
     );
   }
