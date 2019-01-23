@@ -6,7 +6,7 @@ import ManagePage from './ManagePage';
 import PreviewPage from "./PreviewPage"
 class App extends Component {
 
-  state = {tvShow:{name:"", rating:"", img:""}} 
+  state = {tvShow:{name:"", rating:"", img:""}, tvShows:[]} 
 
   tvShowDeleted = () => {
     this.setState({
@@ -20,11 +20,11 @@ class App extends Component {
 }
 saveTvShow = (ObjshowToSave) => {
 
-    this.setState({
-      tvShow: ObjshowToSave
+    this.setState((prevState) => {
+      return{
+        tvShows:[...prevState.tvShows,ObjshowToSave]
+      }
     })
-    console.log(ObjshowToSave)
-
 }
 
 renderPreviewPage = () => {
@@ -44,6 +44,7 @@ renderManagePage = () => {
 }
 
   render() {
+    console.log(this.state)
     return (
       <div>
             <SiteNav/> 
