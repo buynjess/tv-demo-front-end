@@ -33,13 +33,31 @@ export default class ManagePage extends Component{
 
     }
     renderTvShow = () => {
-        console.log('from renderTvShowOnManagePage', this.props.tvShow)
-        return(<TvShow name={this.props.tvShow.name}
-                        allowDelete={true}
-                        selectHandler={this.tvShowSelected}
-                        deleteHandler={this.tvShowDeleted}
-                        saveHandler={this.saveTvShow}
-                        tvShows={this.props.tvShows}/>)
+        console.log('from renderTvShowOnManagePage', this.props.tvShows)
+        if(!this.props.tvShows){
+            return
+        }else{
+            const showsArray = this.props.tvShows
+            let newShowArray = []
+      for (const show of showsArray) {
+         newShowArray.push(<TvShow name={show.name}
+                            allowDelete={true}
+                            selectHandler={this.tvShowSelected}
+                            deleteHandler={this.tvShowDeleted}
+                            saveHandler={this.saveTvShow}
+                            tvShows={show}/>)
+              }
+              return newShowArray
+             console.log(newShowArray)
+        }
+
+        // return(<TvShow name={this.props.tvShow.name}
+        //                 allowDelete={true}
+        //                 selectHandler={this.tvShowSelected}
+        //                 deleteHandler={this.tvShowDeleted}
+        //                 saveHandler={this.saveTvShow}
+        //                 tvShows={this.props.tvShows}/>)
+
     }
     static propTypes = {
         tvShow: propTypes.object.isRequired,
