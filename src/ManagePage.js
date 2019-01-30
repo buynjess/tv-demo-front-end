@@ -10,18 +10,18 @@ export default class ManagePage extends Component{
             ratingInProgress:this.props.tvShow.rating,
             imgInProgress:this.props.tvShow.img
         })
-        console.log("tvShowSelected")
+        // console.log("tvShowSelected")
     
     }
     tvShowDeleted = () => {
         this.props.tvShowDeleted()    
-        console.log("tvShowDeleted")
+        // console.log("tvShowDeleted")
     }
     passTvShowUp = (event) => {
         event.preventDefault()
         this.props.saveTvShow({
             name: this.state.nameInProgress,
-            rating:this.state.ratingInProgress,
+            rating:Number(this.state.ratingInProgress),
             img:this.state.imgInProgress
         })
         this.setState({
@@ -29,11 +29,11 @@ export default class ManagePage extends Component{
             ratingInProgress:"",
             imgInProgress:""
         })
-        console.log("saveTvShow")
+        // console.log("saveTvShow")
 
     }
     renderTvShow = () => {
-        console.log('from renderTvShowOnManagePage', this.props.tvShows)
+        // console.log('from renderTvShowOnManagePage', this.props.tvShows)
             const showsArray = this.props.tvShows;
             let newShowArray = showsArray.map((show)=>{
                 return (<TvShow name={show.name}
@@ -63,7 +63,7 @@ export default class ManagePage extends Component{
         // }
     }
 
-     propTypes = {
+     static propTypes = {
         tvShow: propTypes.object.isRequired,
         tvShows: propTypes.array.isRequired,
         tvShowDeleted: propTypes.func.isRequired,

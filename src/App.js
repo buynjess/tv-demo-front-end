@@ -21,7 +21,7 @@ class App extends Component {
 saveTvShow = (ObjshowToSave) => {
 
     this.setState((prevState) => {
-      console.log(prevState)
+      // console.log(prevState)
       return{
         tvShows:[...prevState.tvShows,ObjshowToSave]
       }
@@ -31,7 +31,7 @@ saveTvShow = (ObjshowToSave) => {
 renderPreviewPage = () => {
   return(
     <div>
-      <PreviewPage tvShow={this.state.tvShow}/>
+      <PreviewPage tvShows={this.state.tvShows}/>
     </div>
   )
 }
@@ -45,7 +45,7 @@ renderManagePage = () => {
 }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div>
             <SiteNav/> 
