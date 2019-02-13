@@ -39,7 +39,7 @@ renderPreviewPage = () => {
 renderManagePage = () => {
   return(
     <div>
-      <ManagePage tvShows={this.state.tvShows} tvShowDeleted={this.tvShowDeleted} saveTvShow={this.saveTvShow}/>
+      <ManagePage tvShowDeleted={this.tvShowDeleted} saveTvShow={this.saveTvShow}/>
     </div>
   )
 }

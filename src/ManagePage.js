@@ -4,38 +4,68 @@ import propTypes from 'prop-types'
 
 
 export default class ManagePage extends Component{
-    tvShowSelected = () => {
+    
+    componentDidMount(){
+        fetch('http://localhost:4000/shows') 
+        .then((res) => res.json())
+        .then((newTvShows)=>{
+            console.log(newTvShows)
+            this.setState({
+                tvShows: newTvShows
+            })
+        }).catch((res) => res)
+    }
+    
+    tvShowSelected = ( ) => {
         this.setState({
-            nameInProgress:this.props.tvShow.name,
-            ratingInProgress:this.props.tvShow.rating,
-            imgInProgress:this.props.tvShow.img
+            nameInProgress:this.state.tvShow.name,
+            ratingInProgress:this.state.tvShow.rating,
+            imgInProgress:this.state.tvShow.img
         })
         // console.log("tvShowSelected")
     
     }
     tvShowDeleted = () => {
-        this.props.tvShowDeleted()    
+        this.state.tvShowDeleted()    
         // console.log("tvShowDeleted")
     }
     passTvShowUp = (event) => {
         event.preventDefault()
-        this.props.saveTvShow({
+        const newTvShow = {
             name: this.state.nameInProgress,
             rating:Number(this.state.ratingInProgress),
             img:this.state.imgInProgress
+        }
+        fetch('http://localhost:4000/shows', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newTvShow)
         })
-        this.setState({
-            nameInProgress:"",
-            ratingInProgress:"",
-            imgInProgress:""
-        })
+        .then(res => res.json())
+        .then(res => {
+            this.setState({
+                tvShows: res
+            })
+        });
+
+        // this.state.saveTvShow({
+        //     name: this.state.nameInProgress,
+        //     rating:Number(this.state.ratingInProgress),
+        //     img:this.state.imgInProgress
+        // })
+        // this.setState({
+        //     nameInProgress:"",
+        //     ratingInProgress:"",
+        //     imgInProgress:""
+        // })
         // console.log("saveTvShow")
 
     }
     renderTvShow = () => {
+
         // console.log('from renderTvShowOnManagePage', this.props.tvShows)
-            const showsArray = this.props.tvShows;
-            let newShowArray = showsArray.map((show)=>{
+            console.log(this.state.tvShows)
+            let newShowArray = this.state.tvShows.map((show)=>{
                 return (<TvShow name={show.name}
                                             allowDelete={true}
                                             selectHandler={this.tvShowSelected}
@@ -44,23 +74,6 @@ export default class ManagePage extends Component{
                                             tvShows={show}/>)
             })
             return newShowArray
-   
-    //     if(!this.props.tvShows){
-    //         return
-    //     }else{
-    //         const showsArray = this.props.tvShows
-    //         let newShowArray = []
-    //   for (const show of showsArray) {
-    //      newShowArray.push(<TvShow name={show.name}
-    //                         allowDelete={true}
-    //                         selectHandler={this.tvShowSelected}
-    //                         deleteHandler={this.tvShowDeleted}
-    //                         saveHandler={this.saveTvShow}
-    //                         tvShows={show}/>)
-    //           }
-    //           return newShowArray
-    //          console.log(newShowArray)
-        // }
     }
 
      static propTypes = {
@@ -70,9 +83,11 @@ export default class ManagePage extends Component{
         saveTvShow: propTypes.func.isRequired
 
     }
-    state = {nameInProgress:"", ratingInProgress:"", imgInProgress:""}
+    state = {nameInProgress:"", ratingInProgress:"", imgInProgress:"", tvShows:[]} 
 
-    render = () => {
+
+    render(){
+        console.log(this.state)
         return(
             <div>
             
@@ -96,7 +111,7 @@ export default class ManagePage extends Component{
                             this.setState({ imgInProgress: e.target.value })
                             }} type="link" value={this.state.imgInProgress}/> 
                         <br/>
-                        <button onClick={this.passTvShowUp}>Create/Update/Save</button>
+                        <button onClick={this.passTvShowUp }>Create/Update/Save</button>
                         </form>
                     </section>
                     </div>
