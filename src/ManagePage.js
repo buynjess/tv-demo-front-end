@@ -5,15 +5,21 @@ import propTypes from 'prop-types'
 
 export default class ManagePage extends Component{
     
-    componentDidMount(){
-        fetch('http://localhost:4000/shows') 
-        .then((res) => res.json())
-        .then((newTvShows)=>{
-            console.log(newTvShows)
-            this.setState({
+    async componentDidMount(){
+       const res = await fetch('http://localhost:4000/shows')
+       const newTvShows = await res.json()
+         this.setState({
                 tvShows: newTvShows
             })
-        }).catch((res) => res)
+        
+        // fetch('http://localhost:4000/shows') 
+        // .then((res) => res.json())
+        // .then((newTvShows)=>{
+        //     console.log(newTvShows)
+        //     this.setState({
+        //         tvShows: newTvShows
+        //     })
+        // }).catch((res) => res)
     }
     
     tvShowSelected = ( ) => {
@@ -29,24 +35,23 @@ export default class ManagePage extends Component{
         this.state.tvShowDeleted()    
         // console.log("tvShowDeleted")
     }
-    passTvShowUp = (event) => {
+    async passTvShowUp(event){
         event.preventDefault()
         const newTvShow = {
             name: this.state.nameInProgress,
             rating:Number(this.state.ratingInProgress),
             img:this.state.imgInProgress
         }
-        fetch('http://localhost:4000/shows', {
+        const res = await fetch('http://localhost:4000/shows', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newTvShow)
         })
-        .then(res => res.json())
-        .then(res => {
+        const newTvShows = await res.json()
             this.setState({
-                tvShows: res
+                tvShows: newTvShows
             })
-        });
+        };
 
         // this.state.saveTvShow({
         //     name: this.state.nameInProgress,
@@ -60,7 +65,7 @@ export default class ManagePage extends Component{
         // })
         // console.log("saveTvShow")
 
-    }
+    
     renderTvShow = () => {
 
         // console.log('from renderTvShowOnManagePage', this.props.tvShows)
