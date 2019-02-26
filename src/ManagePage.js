@@ -4,10 +4,11 @@ import propTypes from 'prop-types'
 
 
 export default class ManagePage extends Component{
-    
+    state = {nameInProgress:"", ratingInProgress:"", imgInProgress:"", tvShows:[]} 
     async componentDidMount(){
-       const res = await fetch('https://fathomless-hamlet-44989.herokuapp.com/shows')
+       const res = await fetch('https://ancient-depths-17587.herokuapp.com/shows')
        const newTvShows = await res.json()
+       console.log(newTvShows)
          this.setState({
                 tvShows: newTvShows
             })
@@ -35,19 +36,21 @@ export default class ManagePage extends Component{
         this.state.tvShowDeleted()    
         // console.log("tvShowDeleted")
     }
-    async passTvShowUp(event){
-        event.preventDefault()
+    
+    async passTvShowUp(){
+      
         const newTvShow = {
             name: this.state.nameInProgress,
             rating:Number(this.state.ratingInProgress),
             img:this.state.imgInProgress
         }
-        const res = await fetch('https://fathomless-hamlet-44989.herokuapp.com/shows', {
+        const res = await fetch('https://ancient-depths-17587.herokuapp.com/shows', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newTvShow)
         })
         const newTvShows = await res.json()
+        console.log(newTvShows)
             this.setState({
                 tvShows: newTvShows
             })
@@ -69,7 +72,7 @@ export default class ManagePage extends Component{
     renderTvShow = () => {
 
         // console.log('from renderTvShowOnManagePage', this.props.tvShows)
-            console.log(this.state.tvShows)
+            console.log(this.state)
             let newShowArray = this.state.tvShows.map((show)=>{
                 return (<TvShow name={show.name}
                                             allowDelete={true}
@@ -88,7 +91,7 @@ export default class ManagePage extends Component{
         saveTvShow: propTypes.func.isRequired
 
     }
-    state = {nameInProgress:"", ratingInProgress:"", imgInProgress:"", tvShows:[]} 
+    
 
 
     render(){
@@ -103,7 +106,7 @@ export default class ManagePage extends Component{
                 </aside>
                 <section>
                     <h2>New/Edit Show</h2>
-                    <form>
+                    <form onSubmit={(e) => { e.preventDefault(); this.passTvShowUp()}}> 
                         Name: <input onChange={(e) => {
                             this.setState({ nameInProgress: e.target.value })
                             }}type="text" value={this.state.nameInProgress}/>
@@ -116,7 +119,7 @@ export default class ManagePage extends Component{
                             this.setState({ imgInProgress: e.target.value })
                             }} type="link" value={this.state.imgInProgress}/> 
                         <br/>
-                        <button onClick={this.passTvShowUp }>Create/Update/Save</button>
+                        <button type="submit">Create/Update/Save</button>
                         </form>
                     </section>
                     </div>
