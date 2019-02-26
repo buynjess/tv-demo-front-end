@@ -43,7 +43,7 @@ export default class ManagePage extends Component{
             img:this.state.imgInProgress
         }
         const res = await fetch('http://localhost:4000/shows', {
-            method: "POST",
+            method: "GET",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newTvShow)
         })

@@ -1,6 +1,4 @@
-import React, {
-    Component
-} from "react"
+import React, {Component} from "react"
 import TvShow from "./TvShow"
 import propTypes from 'prop-types'
 
@@ -32,26 +30,12 @@ export default class PreviewPage extends Component {
         // console.log('from renderTvShowOnManagePage', this.props.tvShows)
         let showsArray = this.props.tvShows;
         return showsArray.filter((show) => show.rating < 4).map((show) => {
-            return ( <
-                TvShow name = {
-                    show.name
-                }
-                allowDelete = {
-                    true
-                }
-                selectHandler = {
-                    this.tvShowSelected
-                }
-                deleteHandler = {
-                    this.tvShowDeleted
-                }
-                saveHandler = {
-                    this.saveTvShow
-                }
-                tvShows = {
-                    show
-                }
-                />
+            return ( <TvShow name = {show.name} 
+                            allowDelete = {true} 
+                            selectHandler = {this.tvShowSelected} 
+                             deleteHandler = {this.tvShowDeleted} 
+                             saveHandler = {this.saveTvShow} 
+                             tvShows = {show}/>
             )
         })
     }

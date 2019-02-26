@@ -50,7 +50,7 @@ renderManagePage = () => {
       <div>
             <SiteNav/> 
             <Switch>
-            <Route exact path="/" component={this.renderManagePage} />
+            <Route exact path="/" component={ManagePage} />
             <Route path="/PreviewPage" component={this.renderPreviewPage} />
             </Switch> 
 
