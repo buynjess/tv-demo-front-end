@@ -6,7 +6,7 @@ import propTypes from 'prop-types'
 export default class ManagePage extends Component{
     
     async componentDidMount(){
-       const res = await fetch('http://localhost:4000/shows')
+       const res = await fetch('https://ancient-depths-17587.herokuapp.com')
        const newTvShows = await res.json()
          this.setState({
                 tvShows: newTvShows
@@ -43,7 +43,7 @@ export default class ManagePage extends Component{
             img:this.state.imgInProgress
         }
         const res = await fetch('http://localhost:4000/shows', {
-            method: "GET",
+            method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newTvShow)
         })
