@@ -6,7 +6,7 @@ import propTypes from 'prop-types'
 export default class ManagePage extends Component{
     
     async componentDidMount(){
-       const res = await fetch('https://ancient-depths-17587.herokuapp.com')
+       const res = await fetch('https://ancient-depths-17587.herokuapp.com/shows')
        const newTvShows = await res.json()
          this.setState({
                 tvShows: newTvShows
